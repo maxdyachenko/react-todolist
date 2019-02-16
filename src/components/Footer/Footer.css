@@ -1,0 +1,13 @@
+footer {
+  display: flex;
+  align-items: center
+}
+
+footer button {
+  margin: 0 10px;
+}
+
+footer button.active {
+  background: green;
+  color: white;
+}
