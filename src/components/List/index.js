@@ -1,8 +1,8 @@
-/* eslint-disable */
-
 import React from 'react';
 import ListItem from './components/ListItem';
 import Select from './components/Select';
+
+import {DEFAULT_FILTER} from 'constants/index';
 
 import './List.css';
 
@@ -10,7 +10,8 @@ class List extends React.Component {
   getArrayList = () => {
     let index = 0;
     return this.props.list.filter( (listitem) => {
-      if ( (this.props.activeFilter === 'ALL' || listitem.status === this.props.activeFilter) && index < this.props.numberOfVisibleItems) {
+      if ( (this.props.activeFilter === DEFAULT_FILTER || listitem.status === this.props.activeFilter) 
+        && index < this.props.numberOfVisibleItems) {
         index += 1;
         return (
           <ListItem 
@@ -27,7 +28,7 @@ class List extends React.Component {
 
   getTotalCountOfList = () => {
     return this.props.list.reduce((counter, listitem) => {
-      if (this.props.activeFilter === 'ALL' || listitem.status === this.props.activeFilter) {
+      if (this.props.activeFilter === DEFAULT_FILTER || listitem.status === this.props.activeFilter) {
         return counter + 1; 
       }
 

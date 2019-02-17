@@ -2,65 +2,24 @@ import React from 'react';
 import List from 'components/List';
 import Footer from 'components/Footer';
 import Form from 'components/Form';
+import {DEFAULT_VISIBLE_ITEMS, DEFAULT_FILTER, ACTIVE_FILTER} from 'constants/index';
 
 import './App.css';
 
-const DEFAULT_VISIBLE_ITEMS = 5;
-
 class App extends React.Component {
   state = {
-    activeFilter: 'ALL',
+    activeFilter: DEFAULT_FILTER,
     numberOfItems: DEFAULT_VISIBLE_ITEMS,
     numberOfVisibleItems: DEFAULT_VISIBLE_ITEMS,
-    list: [
-      {
-        id: 0,
-        status: 'ACTIVE',
-        text: 'list item 1',
-      },
-      {
-        id: 1,
-        status: 'ACTIVE',
-        text: 'list item 1',
-      },
-      {
-        id: 2,
-        status: 'COMPLETED',
-        text: 'list item 2',
-      },
-      {
-        id: 3,
-        status: 'COMPLETED',
-        text: 'list item 3',
-      },
-      {
-        id: 4,
-        status: 'ACTIVE',
-        text: 'list item 4',
-      },
-      {
-        id: 5,
-        status: 'ACTIVE',
-        text: 'list item 5',
-      },
-      {
-        id: 6,
-        status: 'ACTIVE',
-        text: 'list item 6',
-      },
-      {
-        id: 7,
-        status: 'ACTIVE',
-        text: 'list item 7',
-      },
-    ],
+    list: [],
   };
 
   saveNewToDo = todo => {
+    console.log(ACTIVE_FILTER);
     this.setState(prevState => ({
       list: [
         ...prevState.list, 
-        {id: prevState.list.length, text: todo}
+        {id: prevState.list.length, text: todo, status: ACTIVE_FILTER}
       ],
     }));
   };
@@ -101,9 +60,11 @@ class App extends React.Component {
   }
 
   showNextItems = () => {
-    this.setState( prevState => ({
-      numberOfVisibleItems: prevState.numberOfVisibleItems + prevState.numberOfItems
-    }))
+    console.log(this.state.numberOfVisibleItems);
+    console.log(this.state.numberOfItems);
+    this.setState({
+      numberOfVisibleItems: this.state.numberOfVisibleItems + this.state.numberOfItems
+    })
   }
 
   render() {

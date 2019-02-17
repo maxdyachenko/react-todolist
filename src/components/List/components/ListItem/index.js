@@ -1,4 +1,5 @@
 import React from 'react';
+import {COMPLETED_FILTER} from 'constants/index';
 
 import './ListItem.css';
 
@@ -10,6 +11,7 @@ class ListItem extends React.Component {
       this.props.changeStatus(id, 'COMPLETED');
     }
   }
+
   render() {
     return (
       <li className="list-item">
@@ -18,7 +20,7 @@ class ListItem extends React.Component {
           <div className="controls">
             <button onClick={() => this.props.removeTodo(this.props.id)}>Remove</button>
             <button onClick={() => this.handleStatusChange(this.props.id)}>
-              Mark as {this.props.status === 'COMPLETED' ? 'active' : 'completed'}
+              Mark as {this.props.status === COMPLETED_FILTER ? 'active' : 'completed'}
             </button>
           </div>
         </div>
