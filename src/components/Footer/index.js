@@ -9,19 +9,19 @@ class Footer extends React.Component {
       <footer>
         <p>Show: </p>
         <button 
-          className={this.props.activeFilter === DEFAULT_FILTER ? 'active' : null} 
+          className={this.props.activeFilter === DEFAULT_FILTER ? 'button active' : 'button'} 
           onClick={() => this.props.changeFilter(DEFAULT_FILTER)}
         >
           All
         </button>
         <button 
-          className={this.props.activeFilter === ACTIVE_FILTER ? 'active' : null} 
+          className={this.props.activeFilter === ACTIVE_FILTER ? 'button active' : 'button'} 
           onClick={() => this.props.changeFilter(ACTIVE_FILTER)}
         >
           Active
         </button>
         <button           
-          className={this.props.activeFilter === COMPLETED_FILTER ? 'active' : null} 
+          className={this.props.activeFilter === COMPLETED_FILTER ? 'button active' : 'button'} 
           onClick={() => this.props.changeFilter(COMPLETED_FILTER)}
         >
           Completed
