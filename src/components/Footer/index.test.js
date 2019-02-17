@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 import Footer from './index';
 
-import {COMPLETED_FILTER, DEFAULT_FILTER, ACTIVE_FILTER, DEFAULT_VISIBLE_ITEMS} from 'constants/index';
+import {COMPLETED_FILTER, DEFAULT_FILTER, ACTIVE_FILTER} from 'constants/index';
 
 Enzyme.configure({ adapter: new Adapter() });
 

@@ -9,21 +9,16 @@ import './List.css';
 class List extends React.Component {
   getArrayList = () => {
     let index = 0;
-    return this.props.list.filter( (listitem) => {
+    const arr = this.props.list.filter( (listitem) => {
       if ( (this.props.activeFilter === DEFAULT_FILTER || listitem.status === this.props.activeFilter) 
         && index < this.props.numberOfVisibleItems) {
         index += 1;
-        return (
-          <ListItem 
-            key={listitem.id} 
-            id={listitem.id} 
-            text={listitem.text} 
-            removeTodo={this.props.removeTodo} 
-            markAsCompleted={this.props.markAsCompleted}  
-          />
-        )
+        return listitem;
       }
-    })
+    });
+
+    console.log(arr);
+    return arr;
   }
 
   getTotalCountOfList = () => {

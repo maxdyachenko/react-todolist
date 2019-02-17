@@ -2,7 +2,7 @@ import React from 'react';
 import List from 'components/List';
 import Footer from 'components/Footer';
 import Form from 'components/Form';
-import {DEFAULT_VISIBLE_ITEMS, DEFAULT_FILTER, ACTIVE_FILTER} from 'constants/index';
+import {DEFAULT_VISIBLE_ITEMS, DEFAULT_FILTER, ACTIVE_FILTER, COMPLETED_FILTER} from 'constants/index';
 
 import './App.css';
 
@@ -11,7 +11,23 @@ class App extends React.Component {
     activeFilter: DEFAULT_FILTER,
     numberOfItems: DEFAULT_VISIBLE_ITEMS,
     numberOfVisibleItems: DEFAULT_VISIBLE_ITEMS,
-    list: [],
+    list: [
+      {
+        id: 0,
+        text: 'test 1',
+        status: ACTIVE_FILTER
+      },
+      {
+        id: 1,
+        text: 'test 2',
+        status: COMPLETED_FILTER
+      },
+      {
+        id: 2,
+        text: 'test 3',
+        status: DEFAULT_FILTER
+      },
+    ]
   };
 
   saveNewToDo = todo => {

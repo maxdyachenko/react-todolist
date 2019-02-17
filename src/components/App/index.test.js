@@ -1,3 +1,5 @@
+//How can i check function which calls parent function using this.props?
+// How not to write enzyme configure everywhere?
 import React from 'react';
 import Enzyme, {shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
