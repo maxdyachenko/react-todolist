@@ -3,32 +3,28 @@ import {DEFAULT_FILTER, ACTIVE_FILTER, COMPLETED_FILTER} from 'constants/index';
 
 import './Footer.css';
 
-class Footer extends React.Component {
-  render() {
-    return (
-      <footer>
-        <p>Show: </p>
-        <button 
-          className={this.props.activeFilter === DEFAULT_FILTER ? 'button active' : 'button'} 
-          onClick={() => this.props.changeFilter(DEFAULT_FILTER)}
-        >
-          All
-        </button>
-        <button 
-          className={this.props.activeFilter === ACTIVE_FILTER ? 'button active' : 'button'} 
-          onClick={() => this.props.changeFilter(ACTIVE_FILTER)}
-        >
-          Active
-        </button>
-        <button           
-          className={this.props.activeFilter === COMPLETED_FILTER ? 'button active' : 'button'} 
-          onClick={() => this.props.changeFilter(COMPLETED_FILTER)}
-        >
-          Completed
-        </button>
-      </footer>
-    );
-  }
-}
+const Footer = (props) => (
+  <footer>
+    <p>Show: </p>
+    <button 
+      className={props.activeFilter === DEFAULT_FILTER ? 'button active' : 'button'} 
+      onClick={() => props.changeFilter(DEFAULT_FILTER)}
+    >
+      All
+    </button>
+    <button 
+      className={props.activeFilter === ACTIVE_FILTER ? 'button active' : 'button'} 
+      onClick={() => props.changeFilter(ACTIVE_FILTER)}
+    >
+      Active
+    </button>
+    <button           
+      className={props.activeFilter === COMPLETED_FILTER ? 'button active' : 'button'} 
+      onClick={() => props.changeFilter(COMPLETED_FILTER)}
+    >
+      Completed
+    </button>
+  </footer>
+)
 
 export default Footer;

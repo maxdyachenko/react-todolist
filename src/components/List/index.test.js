@@ -1,14 +1,10 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import {shallow} from 'enzyme';
 
 import List from './index';
-import ListItem from 'components/List/components/ListItem';
+import ListItem from './components/ListItem';
 
-
-import {COMPLETED_FILTER, DEFAULT_FILTER, ACTIVE_FILTER} from 'constants/index';
-
-Enzyme.configure({ adapter: new Adapter() });
+import {COMPLETED_FILTER, DEFAULT_FILTER, ACTIVE_FILTER, DEFAULT_VISIBLE_ITEMS} from 'constants/index';
 
 const list = [
   {
@@ -29,14 +25,39 @@ const list = [
 ];
 
 describe('<List />', () => {
-  it('return correact count of list items', () => {
+  it('return correct number of total todos', () => {
     const wrapper = shallow(<List list={list} activeFilter={DEFAULT_FILTER} />);
+
     expect(wrapper.instance().getTotalCountOfList()).toBe(3);
   })
 
-  it('return list of components with correct status', () => {
-    const wrapper = shallow(<List list={list} activeFilter={DEFAULT_FILTER}  removeTodo={() => null} changeStatus={() => null} />);
+  it('return correct amount of <List> components with DEFAULT_FILTER', () => {
+    const wrapper = shallow(<List list={list} activeFilter={DEFAULT_FILTER} numberOfVisibleItems={DEFAULT_VISIBLE_ITEMS} />);
+
+    expect(wrapper.find(ListItem).length).toBe(3);
+  });
+
+  it('return correct amount of <List> components with ACTIVE_FILTER', () => {
+    const wrapper = shallow(<List list={list} activeFilter={ACTIVE_FILTER} numberOfVisibleItems={DEFAULT_VISIBLE_ITEMS} />);
 
     expect(wrapper.find(ListItem).length).toBe(1);
+  });
+
+  it('return correct amount of <List> components with COMPLETED_FILTER', () => {
+    const wrapper = shallow(<List list={list} activeFilter={COMPLETED_FILTER} numberOfVisibleItems={DEFAULT_VISIBLE_ITEMS} />);
+
+    expect(wrapper.find(ListItem).length).toBe(1);
+  });
+
+  it('dont renders button to show next todos as they are not available ', () => {
+    const wrapper = shallow(<List list={list} activeFilter={COMPLETED_FILTER} numberOfVisibleItems={DEFAULT_VISIBLE_ITEMS} />);
+
+    expect(wrapper.find('.list-footer').find('button').length).toBe(0);
+  });
+
+  it('renders button to show next todos as they are available ', () => {
+    const wrapper = shallow(<List list={list} activeFilter={DEFAULT_FILTER} numberOfVisibleItems={2} />);
+
+    expect(wrapper.find('.list-footer').find('button').length).toBe(1);
   });
 });

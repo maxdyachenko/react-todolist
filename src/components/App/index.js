@@ -31,7 +31,6 @@ class App extends React.Component {
   };
 
   saveNewToDo = todo => {
-    console.log(ACTIVE_FILTER);
     this.setState(prevState => ({
       list: [
         ...prevState.list, 
@@ -76,8 +75,6 @@ class App extends React.Component {
   }
 
   showNextItems = () => {
-    console.log(this.state.numberOfVisibleItems);
-    console.log(this.state.numberOfItems);
     this.setState({
       numberOfVisibleItems: this.state.numberOfVisibleItems + this.state.numberOfItems
     })

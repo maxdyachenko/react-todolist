@@ -17,7 +17,6 @@ class List extends React.Component {
       }
     });
 
-    console.log(arr);
     return arr;
   }
 
@@ -54,11 +53,11 @@ class List extends React.Component {
               changeStatus={this.props.changeStatus}
             />
           ))}
-          <div className="list-footer">
-            {this.isItemsAvailable() && <button onClick={this.props.showNextItems}>Show next {this.props.numberOfItems}</button>}
-            <p>Total items: {this.getTotalCountOfList()}</p>
-          </div>
         </ul>
+        <div className="list-footer">
+          {this.isItemsAvailable() && <button onClick={this.props.showNextItems}>Show next {this.props.numberOfItems}</button>}
+          <p>Total items: {this.getTotalCountOfList()}</p>
+        </div>
       </div>
     );
   }

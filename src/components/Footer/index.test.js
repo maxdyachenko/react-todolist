@@ -1,12 +1,10 @@
 import React from 'react';
-import Enzyme, {shallow, mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import {shallow, mount} from 'enzyme';
 
 import Footer from './index';
 
 import {COMPLETED_FILTER, DEFAULT_FILTER, ACTIVE_FILTER} from 'constants/index';
 
-Enzyme.configure({ adapter: new Adapter() });
 
 describe('<Footer />', () => {
   it('it has 3 buttons', () => {
